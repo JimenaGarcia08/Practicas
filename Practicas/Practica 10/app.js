@@ -2,18 +2,30 @@ import * as React from 'react';
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import {createStaticNavigation, useNavigation} from '@react-navigation/native';
-import SettingsScreen from './src/screens/SettingsScreen';
-import DetailsScreen from './src/screens/DetailsScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import {Button} from '@react-navigation/elements';
+import { setStatusBarBackgroundColor } from 'expo-status-bar';
 
-const Stack = createNativeStackNavigator();
+const Stack = createNativeStackNavigator(); 
+
+function HomeScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+    </View>
+  );
+}
+
+function DetailsScreen() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
 
 function RootStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Details"
       screenOptions={{
         headerStyle: { backgroundColor: 'tomato' },
       }}
@@ -21,17 +33,12 @@ function RootStack() {
       <Stack.Screen
         name="Home"
         component={HomeScreen}
-        options={{ title: 'Home' }}
+        options={{ title: 'Dashboard' }}
       />
       <Stack.Screen
         name="Details"
         component={DetailsScreen}
         options={{ title: 'Details' }}
-      />
-      <Stack.Screen
-        name="Settings"
-        component={SettingsScreen}
-        options={{ title: 'Settings' }}
       />
     </Stack.Navigator>
   );

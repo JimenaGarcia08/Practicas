@@ -5,15 +5,27 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {createStaticNavigation, useNavigation} from '@react-navigation/native';
 import SettingsScreen from './src/screens/SettingsScreen';
 import DetailsScreen from './src/screens/DetailsScreen';
-import HomeScreen from './src/screens/HomeScreen';
 import {Button} from '@react-navigation/elements';
+
+function HomeScreen() {
+  const navigation = useNavigation();
+
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <Text>Home Screen</Text>
+      <Button onPress={() => navigation.navigate ('Details')}>
+        Go to Details
+      </Button>
+    </View>
+  );
+}
 
 const Stack = createNativeStackNavigator();
 
 function RootStack() {
   return (
     <Stack.Navigator
-      initialRouteName="Home"
+      initialRouteName="Details"
       screenOptions={{
         headerStyle: { backgroundColor: 'tomato' },
       }}
