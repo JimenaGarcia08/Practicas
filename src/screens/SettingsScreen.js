@@ -1,28 +1,29 @@
-import { View, Text, Button } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { NativeBaseProvider, useColorMode, Text, Button, Center, Box, useColorModeValue } from 'native-base';
 
-function SettingsScreen({ route }) {
-    const navigation = useNavigation();
-    const { itemId, otherParam } = route.params || {};  
+function UseColorMode() {
+    const { toggleColorMode } = useColorMode();
+    const text = useColorModeValue("Light", "Dark");
+    const bg = useColorModeValue("warmGray.50", "coolGray.900"); 
 
     return (
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-            <Text>Settings Screen</Text>
-
-            <Button 
-                title="Go to Details" 
-                onPress={() => navigation.push('Details')} 
-            />
-            <Button 
-                title="Go Back" 
-                onPress={() => navigation.goBack()} 
-            />
-            <Button 
-                title="Go to Home" 
-                onPress={() => navigation.navigate('Home')} 
-            />
-        </View>
+        <Box flex={1} bg={bg} safeArea p="4" w="100%" justifyContent="center" alignItems="center">
+            <Text fontSize="lg" mb={5} color={useColorModeValue("black", "white")}>
+                The active color mode is{" "}
+                <Text bold fontSize="18px">{text}</Text>
+            </Text>
+            <Button onPress={toggleColorMode} h={10}>
+                Toggle
+            </Button>
+        </Box>
     );
 }
+
+function SettingsScreen() {
+    return (
+        <NativeBaseProvider>
+            <UseColorMode />
+        </NativeBaseProvider>
+    );
+};
 
 export default SettingsScreen;
