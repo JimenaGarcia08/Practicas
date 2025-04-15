@@ -9,6 +9,7 @@ import DetailsScreen from './src/screens/DetailsScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import SignupScreen from './src/screens/SignupScreen';
 import ConfigScreen from './src/screens/ConfigScreen';
+import ConfigScreen2 from './src/screens/ConfigScreen2';
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -31,6 +32,7 @@ function DrawerNavigator() {
       <Drawer.Screen name="Details" component={DetailsScreen} />
       <Drawer.Screen name="Settings" component={SettingsScreen} />
       <Drawer.Screen name="Config" component={ConfigScreen} />
+      <Drawer.Screen name="ConfigAdd" component={ConfigScreen2} />
     </Drawer.Navigator>
   );
 }
